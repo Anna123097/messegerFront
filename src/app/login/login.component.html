@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Login~</h2>
+      <br>
+      <form [formGroup]="login_form" (ngSubmit)="login_user()">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >userName:</span>
+          </div>
+          <input type="text" class="form-control" formControlName="username">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >password:</span>
+          </div>
+          <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div class="input-group mb-3">
+          <button type="submit" class="btn btn-secondary">вход+</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

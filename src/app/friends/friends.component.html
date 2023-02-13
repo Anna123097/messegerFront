@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <h3>My friends:</h3>
+      <div *ngFor="let item of friends">
+        <hr>
+        <div class="row">
+          <div class="col-md-2">
+            <div *ngIf="item.friend.img == ''">
+              <img height="100" src="assets/user.png" alt="">
+            </div>
+            <div *ngIf="item.friend.img != ''">
+              <img src="{{baseurl}}/media/{{item.friend.img}}" height="100" alt="">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <a href="/profile/friend/{{item.friend.id}}">
+              <h3>
+                {{item.friend.username}}
+            </h3>
+          </a>
+          </div>
+          <div class="col-md-2">
+            <button (click)="update(item.id)" type="submit" class="btn btn-secondary">delete</button>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

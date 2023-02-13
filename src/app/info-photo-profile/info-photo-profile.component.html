@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Photo: </h4>
+      <br>
+      <div *ngIf = "photo">
+        <img src="{{baseurl}}{{photo.img}}" alt="">
+      </div>
+      <h4>Comments: </h4>
+      <hr>
+      <h5>Add Comment: </h5>
+      <form [formGroup]="form" (ngSubmit)="sendComment()">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >Comment:</span>
+          </div>
+          <input type="text" class="form-control" formControlName="comment">
+        </div>
+        <div class="input-group mb-3">
+          <button type="submit" class="btn btn-secondary">send</button>
+        </div>
+      </form>
+      <div>
+        <h4>{{message}}</h4>
+      </div>
+      <hr>
+      <div *ngFor="let item of comments">
+        <hr>
+        <div class="row">
+          <div class="col-md-2">
+            <div *ngIf="item.user.img == '' ">
+              <img height="100" src="assets/user.png" alt="">
+            </div>
+            <div *ngIf="item.user.img != '' ">
+              <img height="100" src="{{baseurl}}/media/{{item.user.img}}" alt="">
+            </div>
+          </div>
+          <div class="col-md-10">
+            <h6>Autor: {{item.user.username}}</h6>
+            <h5>{{item.comment}}</h5>
+            <div style="padding-top:20px;">
+              <span (click)="deleteComment(item)" style="padding-right: 10px;" >delete</span>
+              <span> <a routerLink="/comment/info/{{item.id}}/">update</a></span>
+            </div>
+          </div>                
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

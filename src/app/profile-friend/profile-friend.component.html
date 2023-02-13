@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class = "col-md-12">
+      <div *ngIf="profile" class="col-md-12">
+        <h4>Profile: </h4>
+        <img *ngIf="profile.img" height="200" src="{{baseurl}}{{profile.img}}" alt="" srcset="">
+        <img *ngIf    ="profile.img == null" height="100" src="assets/user.png" alt="">
+        <p>nikname: {{profile.nickname}}</p>
+        <p>phone: {{profile.phone}}</p>
+        <p>status: {{profile.status}}</p>
+        <p>adress: {{profile.address}}</p>
+        <div *ngIf = "myFriend == false">
+          <button (click)="createMyFriend(profile)" type="button" class="btn btn-secondary" >add</button> 
+        </div>
+        <div *ngIf = "myFriend == true">
+          <button (click)="delete()" type="button" class="btn btn-secondary" >delete</button> 
+        </div>
+        <br>
+        <h5>{{messege}}</h5>
+      </div>
+    </div>
+    <div class ="col-md-12">
+      <h4>Photos: </h4>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let item of photos">
+          <a routerLink="/info/photo/profile/{{item.id}}"><img src="{{item.img}}" width="200" alt="" srcset=""></a>
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+</div>
+
+
+<app-footer></app-footer>
